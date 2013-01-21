@@ -28,7 +28,6 @@
                              (join " "))
                        regions)
         events (map #(generate % grammar) (repeat num :event))]
-    (println locations events)
     (zipmap locations events)))
 
 (defn generate-encounter [grammar locations]
@@ -55,7 +54,6 @@
         grammar (assoc grammar
                   :location l :event e :agenda a
                   :plural [[(pluralize c)]])]
-    (println encounter)
     (map (fn [start] (->> (assoc grammar :start (list start))
                           (generate :start)
                           flatten
@@ -87,4 +85,4 @@
       nil)))
 
 (defn new-game []
-  (make-status 200 350 5 12))
+  (make-status 200 350 5 24))

@@ -18,6 +18,13 @@
         intro (gen-intro (last encounters))]
     {:status status :encounters encounters :intro intro :locations locations}))
 
+(defn score-msg [msg {:keys [pop gold]}]
+  [:div
+   [:p msg]
+   [:h3 "Your Appointment is Complete"]
+   [:p (format "Your final score is: %d. Thank you for playing!"
+               (int (+ (* 2.0 pop) (* 1.5 gold))))]])
+
 (defn index [session flash]
   (if (not (empty? session))
     (let [{:keys [status intro]} session]
@@ -28,15 +35,19 @@
 (defn response [session action]
   (if (not (empty? session))
     (let [encounters (:encounters session)
-          status (:status session)
-          locations (:locations session)
-          turn-result (next-turn status (last encounters) action)
-          new-encounter (gen-enc locations)]
-      {:session (assoc session
-                  :status (first turn-result)
-                  :encounters (conj encounters new-encounter)
-                  :intro (gen-intro new-encounter))
-       :flash (last turn-result)
+          [status msg] (next-turn (:status session)
+                                  (last encounters)
+                                  action)
+          end-game? (= 0 (:turns status))
+          new-encounter (gen-enc (:locations session))
+          msg (if end-game? (score-msg msg status) msg)
+          session (if end-game?
+                    {}
+                    (assoc session
+                      :status status
+                      :encounters (conj encounters new-encounter)
+                      :intro (gen-intro new-encounter)))]
+      {:session session :flash msg
        :status 302 :headers {"Location" "/"}})
     {:session nil :status 302 :headers {"Location" "/"}}))
 

@@ -9,6 +9,6 @@
                  [compojure "1.1.3"]
                  [roul "0.2.0"]]
   :main jangame.core
-  :plugins [[lein-ring "0.7.5"]]
+  :plugins [[lein-ring "0.8.2"]]
   :ring {:handler jangame.web/app}
   :min-lein-version "2.0.0")

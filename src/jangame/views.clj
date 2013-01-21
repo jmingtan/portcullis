@@ -7,6 +7,7 @@
   (html (page/html5
          [:head
           [:title "Portcullis"]
+          [:meta {:name "viewport" :content "width=device-width, initial-scale=1.0"}]
           (map
            page/include-css
            ["//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css"
@@ -25,23 +26,23 @@
                 ".table td, .table th {border-top: 1px solid #222;}"
                 "hr {border-top: 1px solid #222; border-bottom: 0px;}"
                 "#logo {margin-top: 10px;}"
-                "#footer {margin-top: 50px; margin-bottom: 5px}"
-                "center > p {font-size: 14px; font-family: Times,\"Times New Roman\",serif;}")]]
+                "#footer {margin-top: 50px; margin-bottom: 5px}")]]
          [:body body])))
 
 (defn index
   [{:keys [pop gold seasons turns]} intro conversation flash]
   (template
-   [:div {:class "container"}
-    [:div {:class "row"}
-     [:center
-      [:img {:id "logo" :src "/img/Icon.3_17.png" :width 150 :height 150}]]]
+   [:div {:class "container-fluid"}
     [:div {:class "row"}
      [:div {:class "offset1 span10"}
-      [:h1 "Portcullis"]
-      [:p (str "You are the gatekeeper for a small town. "
-               "Who you choose to let in decides how the town progresses.")]
-      [:p (str "Your appointment will last for " turns " more turns. ")]
+      [:center
+       [:img {:id "logo" :src "/img/Icon.3_17.png" :width 150 :height 150}]
+       [:h1 "Portcullis"]
+       [:p (str "You are the gatekeeper for a small town. "
+                "Who you choose to let in decides how the town progresses.")]
+       [:p (str "Your appointment will last for " turns " more turns. ")]]]]
+    [:div {:class "row"}
+     [:div {:class "offset1 span10"}
       ;; [:p "There are 5 turns left for this season."]
       (if flash
         [:div {:class "alert alert-info"} flash])
