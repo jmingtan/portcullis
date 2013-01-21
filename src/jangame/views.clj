@@ -36,7 +36,7 @@
     [:div {:class "row"}
      [:div {:class "offset1 span10"}
       [:center
-       [:img {:id "logo" :src "/img/Icon.3_17.png" :width 150 :height 150}]
+       [:img {:id "logo" :src "/img/Icon.3_17.jpg" :width 150 :height 150}]
        [:h1 "Portcullis"]
        [:p (str "You are the gatekeeper for a small town. "
                 "Who you choose to let in decides how the town progresses.")]
