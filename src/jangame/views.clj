@@ -17,12 +17,14 @@
           (map
            page/include-js
            ["//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
-            "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"])
+            "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"
+            "/js/analytics.js"])
           [:style {:type "text/css"}
            (str "h1, h3 {font-family: \"Berkshire Swash\", serif;}"
                 "h1 {font-size: 45px;} h3 {font-size: 30px;}"
                 "body {font-size: 24px; font-family: Aladin, sans-serif; background: url(/img/461223198.jpeg) repeat 0 0; color: #222;}"
                 "p {line-height: 1.2em;}"
+                "a {color: rgb(41, 87, 95);}"
                 ".table td, .table th {border-top: 1px solid #222;}"
                 "hr {border-top: 1px solid #222; border-bottom: 0px;}"
                 "#logo {margin-top: 10px;}"
@@ -39,7 +41,8 @@
        [:img {:id "logo" :src "/img/Icon.3_17.jpg" :width 150 :height 150}]
        [:h1 "Portcullis"]
        [:p (str "You are the gatekeeper for a small town. "
-                "Who you choose to let in decides how the town progresses.")]
+                "Who you choose to let in decides how the town progresses. "
+                "Memory and observation are your tools of the trade.")]
        [:p (str "Your appointment will last for " turns " more turns. ")]]]]
     [:div {:class "row"}
      [:div {:class "offset1 span10"}
@@ -63,5 +66,6 @@
      [:div {:class "offset1 span10"}
       [:hr {:id "footer"}]
       [:center
+       [:p "To begin a new game, click " [:a {:href "/new"} "here"] "."]
        [:p "Icons by Lorc."]]]]]))
 
