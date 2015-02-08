@@ -17,8 +17,7 @@
           (map
            page/include-js
            ["//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
-            "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"
-            "/js/analytics.js"])
+            "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"])
           [:style {:type "text/css"}
            (str "h1, h3 {font-family: \"Berkshire Swash\", serif;}"
                 "h1 {font-size: 45px;} h3 {font-size: 30px;}"
